@@ -13,7 +13,7 @@ import java.util.Map;
 
 import mg.huffman.codec.HuffmanCodec;
 
-public class TextEncodignPanel extends BasePanel{
+public class TextEncodingPanel extends BasePanel{
     
     private HuffmanCodec codec;
     private JTextArea inputArea;
