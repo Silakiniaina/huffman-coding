@@ -23,6 +23,10 @@ public class HuffmanTree {
         return encodingMap.get(character);
     }
 
+    public char decodeString(String code) {
+        return decodingMap.get(code);
+    }
+
 
     /* -------------------------------------------------------------------------- */
     /*                                   Getters                                  */
