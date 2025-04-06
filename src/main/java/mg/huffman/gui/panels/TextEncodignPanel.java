@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.util.Map;
 
 import mg.huffman.codec.HuffmanCodec;
 
@@ -32,6 +33,35 @@ public class TextEncodignPanel extends BasePanel{
         panel.add(new JLabel(label), BorderLayout.NORTH);
         panel.add(component, BorderLayout.CENTER);
         return panel;
+    }
+
+    private void encodeText() {
+        try {
+            String inputText = inputArea.getText();
+            if (inputText.isEmpty()) {
+                showError("Please enter text to encode");
+                return;
+            }
+
+            String encodedText = codec.processText(inputText);
+            outputArea.setText(encodedText);
+
+            StringBuilder mapText = new StringBuilder();
+            for (Map.Entry<Character, String> entry : codec.getTree().getEncodingMap().entrySet()) {
+                mapText.append("'")
+                       .append(entry.getKey() == '\n' ? "\\n" : entry.getKey())
+                       .append("': ")
+                       .append(entry.getValue())
+                       .append("\n");
+            }
+            mapArea.setText(mapText.toString());
+
+            showSuccess("Encoding successful!\nOriginal size: " + inputText.length() * 8 + " bits\n" +
+                        "Encoded size: " + encodedText.length() + " bits");
+
+        } catch (Exception e) {
+            showError("Error during encoding: " + e.getMessage());
+        }
     }
 
     @Override
