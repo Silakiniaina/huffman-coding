@@ -2,6 +2,7 @@ package mg.huffman.codec;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 public class HuffmanTree {
     private Node root;
@@ -19,14 +20,21 @@ public class HuffmanTree {
     /* -------------------------------------------------------------------------- */
     /*                                  Functions                                 */
     /* -------------------------------------------------------------------------- */
-    public String encodeCharacter(char character) {
-        return encodingMap.get(character);
+    public void buildTree(Map<Character, Double> probabilities) {
+        PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
+        for (Map.Entry<Character, Double> entry : probabilities.entrySet()) {
+            priorityQueue.add(new Node(entry.getKey(), entry.getValue()));
+        }
+        while (priorityQueue.size() > 1) {
+            Node left = priorityQueue.poll();
+            Node right = priorityQueue.poll();
+            Node parent = new Node(left, right);
+            priorityQueue.add(parent);
+        }
+        root = priorityQueue.poll();
+        generateCodes(root, "");
     }
-
-    public char decodeString(String code) {
-        return decodingMap.get(code);
-    }
-
+    
     private void generateCodes(Node node, String code) {
         if (node.isLeaf) {
             encodingMap.put(node.character, code);
@@ -36,6 +44,16 @@ public class HuffmanTree {
         generateCodes(node.left, code + "0");
         generateCodes(node.right, code + "1");
     }
+
+    public String encodeCharacter(char character) {
+        return encodingMap.get(character);
+    }
+
+    public char decodeString(String code) {
+        return decodingMap.get(code);
+    }
+
+
 
 
     /* -------------------------------------------------------------------------- */
