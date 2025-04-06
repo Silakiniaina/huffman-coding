@@ -23,6 +23,9 @@ public class TextDecodingPanel extends BasePanel {
     private final JButton decodeButton;
     private final JButton setDictionaryButton;
 
+    /* -------------------------------------------------------------------------- */
+    /*                                 Constructor                                */
+    /* -------------------------------------------------------------------------- */
     public TextDecodingPanel(HuffmanCodec codec) {
         super();
         this.codec = codec;
@@ -58,6 +61,9 @@ public class TextDecodingPanel extends BasePanel {
         setDictionaryButton.addActionListener(e -> setDictionary());
     }
 
+    /* -------------------------------------------------------------------------- */
+    /*                                  Functions                                 */
+    /* -------------------------------------------------------------------------- */
     private JTextArea createTextArea(int rows, int cols) {
         JTextArea textArea = new JTextArea(rows, cols);
         textArea.setLineWrap(true);
@@ -148,4 +154,27 @@ public class TextDecodingPanel extends BasePanel {
         outputArea.setText("");
         dictionaryArea.setText("");
     }
+
+    /* -------------------------------------------------------------------------- */
+    /*                                   Getters                                  */
+    /* -------------------------------------------------------------------------- */
+    public HuffmanCodec getCodec() {
+        return codec;
+    }
+    public JTextArea getInputArea() {
+        return inputArea;
+    }
+    public JTextArea getOutputArea() {
+        return outputArea;
+    }
+    public JTextArea getDictionaryArea() {
+        return dictionaryArea;
+    }
+    public JButton getDecodeButton() {
+        return decodeButton;
+    }
+    public JButton getSetDictionaryButton() {
+        return setDictionaryButton;
+    }
+    
 }
