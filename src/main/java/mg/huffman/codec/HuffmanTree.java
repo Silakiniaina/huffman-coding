@@ -45,6 +45,35 @@ public class HuffmanTree {
         generateCodes(node.right, code + "1");
     }
 
+    public void reconstructTree(Map<Character, String> codeMap) {
+        root = new Node('\0', 0);
+        for (Map.Entry<Character, String> entry : codeMap.entrySet()) {
+            char character = entry.getKey();
+            String code = entry.getValue();
+            Node current = root;
+            for (int i = 0; i < code.length(); i++) {
+                char bit = code.charAt(i);
+                if (bit == '0') {
+                    if (current.left == null) {
+                        current.left = new Node('\0', 0);
+                        current.left.isLeaf = false;
+                    }
+                    current = current.left;
+                } else if (bit == '1') {
+                    if (current.right == null) {
+                        current.right = new Node('\0', 0);
+                        current.right.isLeaf = false;
+                    }
+                    current = current.right;
+                }
+                if (i == code.length() - 1) {
+                    current.character = character;
+                    current.isLeaf = true;
+                }
+            }
+        }
+    }
+
     public String encodeCharacter(char character) {
         return encodingMap.get(character);
     }
