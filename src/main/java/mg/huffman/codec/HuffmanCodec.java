@@ -33,6 +33,18 @@ public class HuffmanCodec {
         return probabilities;
     }
 
+    public String encode(String text) {
+        Map<Character, String> encodingMap = tree.getEncodingMap();
+        if (encodingMap.isEmpty()) {
+            throw new IllegalStateException("Huffman tree has not been built!");
+        }
+        StringBuilder encoded = new StringBuilder();
+        for (char c : text.toCharArray()) {
+            encoded.append(encodingMap.get(c));
+        }
+        return encoded.toString();
+    }
+
     /* -------------------------------------------------------------------------- */
     /*                                   Getters                                  */
     /* -------------------------------------------------------------------------- */
