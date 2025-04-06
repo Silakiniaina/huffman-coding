@@ -27,6 +27,16 @@ public class HuffmanTree {
         return decodingMap.get(code);
     }
 
+    private void generateCodes(Node node, String code) {
+        if (node.isLeaf) {
+            encodingMap.put(node.character, code);
+            decodingMap.put(code, node.character);
+            return;
+        }
+        generateCodes(node.left, code + "0");
+        generateCodes(node.right, code + "1");
+    }
+
 
     /* -------------------------------------------------------------------------- */
     /*                                   Getters                                  */
