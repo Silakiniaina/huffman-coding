@@ -45,6 +45,13 @@ public class HuffmanCodec {
         return encoded.toString();
     }
 
+    public String decode(String encodedText) {
+        if (tree.getRoot() == null) {
+            throw new IllegalStateException("Huffman tree has not been built!");
+        }
+        return tree.decode(encodedText);
+    }
+
     /* -------------------------------------------------------------------------- */
     /*                                   Getters                                  */
     /* -------------------------------------------------------------------------- */
