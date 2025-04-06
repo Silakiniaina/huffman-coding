@@ -10,7 +10,7 @@ public class HuffmanCoding {
     public static void main(String[] args) {
         try {
             if (args.length < 3) {
-                System.out.println("Usage: java HuffmanCoding [compress] inputFile outputFile");
+                System.out.println("Usage: java HuffmanCoding [compress|decompress] inputFile outputFile");
                 return;
             }
             
@@ -23,8 +23,11 @@ public class HuffmanCoding {
             if ("compress".equals(mode)) {
                 huffmanIO.compressFile(inputFile, outputFile);
                 System.out.println("File compressed successfully!");
-            }else {
-                System.out.println("Unrecognized mode. Use 'compress'");
+            } else if ("decompress".equals(mode)) {
+                huffmanIO.decompressFile(inputFile, outputFile);
+                System.out.println("File decompressed successfully!");
+            } else {
+                System.out.println("Unrecognized mode. Use 'compress' or 'decompress'.");
             }
             
         } catch (Exception e) {
