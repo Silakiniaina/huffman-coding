@@ -1,6 +1,7 @@
 package mg.huffman.gui.panels;
 
 import javax.swing.BorderFactory;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -28,6 +29,14 @@ public abstract class BasePanel extends JPanel implements ClearablePanel {
 
     protected void showSuccess(String message) {
         showMessage(message, "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    protected String browseForFile() {
+        JFileChooser fileChooser = new JFileChooser();
+        if (fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            return fileChooser.getSelectedFile().getAbsolutePath();
+        }
+        return null;
     }
     
 }
