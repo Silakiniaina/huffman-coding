@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.SwingUtilities;
 
 import mg.huffman.codec.HuffmanCodec;
 import mg.huffman.gui.panels.FileCompressionPanel;
