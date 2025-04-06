@@ -7,6 +7,14 @@ public class Node implements Comparable<Node> {
     Node right;
     boolean isLeaf;
 
+    public Node(char character, double probability) {
+        this.setCharacter(character);
+        this.setProbability(probability);
+        this.setLeft(null);
+        this.setRight(null);
+        this.setLeaf(true);
+    }
+
     public char getCharacter() {
         return character;
     }
