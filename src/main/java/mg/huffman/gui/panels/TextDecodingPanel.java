@@ -148,6 +148,9 @@ public class TextDecodingPanel extends BasePanel {
         }
     }
 
+    /* -------------------------------------------------------------------------- */
+    /*                                  Override                                  */
+    /* -------------------------------------------------------------------------- */
     @Override
     public void clear() {
         inputArea.setText("");
