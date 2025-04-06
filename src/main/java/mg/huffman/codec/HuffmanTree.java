@@ -34,7 +34,7 @@ public class HuffmanTree {
         root = priorityQueue.poll();
         generateCodes(root, "");
     }
-    
+
     private void generateCodes(Node node, String code) {
         if (node.isLeaf) {
             encodingMap.put(node.character, code);
@@ -47,6 +47,23 @@ public class HuffmanTree {
 
     public String encodeCharacter(char character) {
         return encodingMap.get(character);
+    }
+
+    public String decode(String encodedText) {
+        StringBuilder decoded = new StringBuilder();
+        Node current = root;
+        for (char bit : encodedText.toCharArray()) {
+            if (bit == '0') {
+                current = current.left;
+            } else if (bit == '1') {
+                current = current.right;
+            }
+            if (current.isLeaf) {
+                decoded.append(current.character);
+                current = root;
+            }
+        }
+        return decoded.toString();
     }
 
     public char decodeString(String code) {
