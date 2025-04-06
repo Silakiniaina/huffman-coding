@@ -15,6 +15,14 @@ public class Node implements Comparable<Node> {
         this.setLeaf(true);
     }
 
+    public Node(Node left, Node right) {
+        this.setLeft(left);
+        this.setRight(right);
+        this.setLeaf(false);
+        this.setCharacter('\0');
+        this.setProbability(left.getProbability() + right.getProbability());
+    }
+
     public char getCharacter() {
         return character;
     }
