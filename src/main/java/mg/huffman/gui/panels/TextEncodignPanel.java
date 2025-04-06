@@ -14,6 +14,16 @@ public class TextEncodignPanel extends BasePanel{
     private final JButton encodeButton;
 
     /* -------------------------------------------------------------------------- */
+    /*                                  Functions                                 */
+    /* -------------------------------------------------------------------------- */
+    @Override
+    public void clear() {
+        inputArea.setText("");
+        outputArea.setText("");
+        mapArea.setText("");
+    }
+
+    /* -------------------------------------------------------------------------- */
     /*                                   Setters                                  */
     /* -------------------------------------------------------------------------- */
     public void setCodec(HuffmanCodec codec) {
