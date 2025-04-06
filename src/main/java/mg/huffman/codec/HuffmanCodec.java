@@ -52,6 +52,13 @@ public class HuffmanCodec {
         return tree.decode(encodedText);
     }
 
+    public String processText(String text) {
+        Map<Character, Integer> frequencies = calculateFrequencies(text);
+        Map<Character, Double> probabilities = calculateProbabilities(frequencies, text.length());
+        tree.buildTree(probabilities);
+        return encode(text);
+    }
+
     /* -------------------------------------------------------------------------- */
     /*                                   Getters                                  */
     /* -------------------------------------------------------------------------- */
