@@ -15,11 +15,11 @@ import mg.huffman.codec.HuffmanCodec;
 
 public class TextEncodingPanel extends BasePanel{
     
-    private HuffmanCodec codec;
-    private JTextArea inputArea;
-    private JTextArea outputArea;
-    private JTextArea mapArea;
-    private JButton encodeButton;
+    private final HuffmanCodec codec;
+    private final JTextArea inputArea;
+    private final JTextArea outputArea;
+    private final  JTextArea mapArea;
+    private final JButton encodeButton;
 
     /* -------------------------------------------------------------------------- */
     /*                                 Constructor                                */
