@@ -3,20 +3,53 @@ package mg.huffman.gui.panels;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.lang.reflect.Constructor;
 import java.util.Map;
 
 import mg.huffman.codec.HuffmanCodec;
 
 public class TextEncodignPanel extends BasePanel{
     
-    private final HuffmanCodec codec;
-    private final JTextArea inputArea;
-    private final JTextArea outputArea;
-    private final JTextArea mapArea;
-    private final JButton encodeButton;
+    private HuffmanCodec codec;
+    private JTextArea inputArea;
+    private JTextArea outputArea;
+    private JTextArea mapArea;
+    private JButton encodeButton;
+
+    /* -------------------------------------------------------------------------- */
+    /*                                 Constructor                                */
+    /* -------------------------------------------------------------------------- */
+    public TextEncodingPanel(HuffmanCodec codec) {
+        super();
+        this.codec = codec;
+        setLayout(new BorderLayout(5, 5));
+
+        inputArea = createTextArea();
+        outputArea = createTextArea();
+        outputArea.setEditable(false);
+        mapArea = createTextArea();
+        mapArea.setEditable(false);
+        encodeButton = new JButton("Encode");
+
+        JPanel inputPanel = createLabeledPanel("Text to Encode:", new JScrollPane(inputArea));
+        JPanel outputPanel = createLabeledPanel("Encoded Text:", new JScrollPane(outputArea));
+        JPanel mapPanel = createLabeledPanel("Huffman Codes:", new JScrollPane(mapArea));
+
+        JSplitPane textSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, inputPanel, outputPanel);
+        textSplit.setResizeWeight(0.5);
+        JSplitPane mainSplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, textSplit, mapPanel);
+        mainSplit.setResizeWeight(0.7);
+
+        add(mainSplit, BorderLayout.CENTER);
+        add(encodeButton, BorderLayout.SOUTH);
+
+        encodeButton.addActionListener(e -> encodeText());
+    }
 
     /* -------------------------------------------------------------------------- */
     /*                                  Functions                                 */
@@ -89,6 +122,25 @@ public class TextEncodignPanel extends BasePanel{
     }
     public JButton getEncodeButton() {
         return encodeButton;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                                   Setters                                  */
+    /* -------------------------------------------------------------------------- */
+    public void setCodec(HuffmanCodec codec) {
+        this.codec = codec;
+    }
+    public void setInputArea(JTextArea inputArea) {
+        this.inputArea = inputArea;
+    }
+    public void setOutputArea(JTextArea outputArea) {
+        this.outputArea = outputArea;
+    }
+    public void setMapArea(JTextArea mapArea) {
+        this.mapArea = mapArea;
+    }
+    public void setEncodeButton(JButton encodeButton) {
+        this.encodeButton = encodeButton;
     }
 
 }
