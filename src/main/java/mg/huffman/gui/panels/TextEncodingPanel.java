@@ -123,24 +123,4 @@ public class TextEncodingPanel extends BasePanel{
     public JButton getEncodeButton() {
         return encodeButton;
     }
-
-    /* -------------------------------------------------------------------------- */
-    /*                                   Setters                                  */
-    /* -------------------------------------------------------------------------- */
-    public void setCodec(HuffmanCodec codec) {
-        this.codec = codec;
-    }
-    public void setInputArea(JTextArea inputArea) {
-        this.inputArea = inputArea;
-    }
-    public void setOutputArea(JTextArea outputArea) {
-        this.outputArea = outputArea;
-    }
-    public void setMapArea(JTextArea mapArea) {
-        this.mapArea = mapArea;
-    }
-    public void setEncodeButton(JButton encodeButton) {
-        this.encodeButton = encodeButton;
-    }
-
 }
