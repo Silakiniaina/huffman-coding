@@ -7,6 +7,9 @@ public class Node implements Comparable<Node> {
     Node right;
     boolean isLeaf;
 
+    /* -------------------------------------------------------------------------- */
+    /*                                Constructors                                */
+    /* -------------------------------------------------------------------------- */
     public Node(char character, double probability) {
         this.setCharacter(character);
         this.setProbability(probability);
@@ -23,40 +26,49 @@ public class Node implements Comparable<Node> {
         this.setProbability(left.getProbability() + right.getProbability());
     }
 
+    /* -------------------------------------------------------------------------- */
+    /*                             Override Functions                             */
+    /* -------------------------------------------------------------------------- */
     @Override
     public int compareTo(Node other) {
         return Double.compare(this.getProbability(), other.getProbability());
     }
 
+    /* -------------------------------------------------------------------------- */
+    /*                                   Getters                                  */
+    /* -------------------------------------------------------------------------- */
     public char getCharacter() {
         return character;
-    }
-    public void setCharacter(char character) {
-        this.character = character;
     }
     public double getProbability() {
         return probability;
     }
-    public void setProbability(double probability) {
-        this.probability = probability;
-    }
     public Node getLeft() {
         return left;
-    }
-    public void setLeft(Node left) {
-        this.left = left;
     }
     public Node getRight() {
         return right;
     }
-    public void setRight(Node right) {
-        this.right = right;
-    }
     public boolean isLeaf() {
         return isLeaf;
+    }
+    
+    /* -------------------------------------------------------------------------- */
+    /*                                   Setters                                  */
+    /* -------------------------------------------------------------------------- */
+    public void setCharacter(char character) {
+        this.character = character;
+    }
+    public void setProbability(double probability) {
+        this.probability = probability;
+    }
+    public void setLeft(Node left) {
+        this.left = left;
+    }
+    public void setRight(Node right) {
+        this.right = right;
     }
     public void setLeaf(boolean isLeaf) {
         this.isLeaf = isLeaf;
     }
-    
 }
