@@ -1,7 +1,11 @@
 package mg.huffman.gui.panels;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import java.awt.BorderLayout;
+import java.awt.Component;
 
 import mg.huffman.codec.HuffmanCodec;
 
@@ -16,6 +20,20 @@ public class TextEncodignPanel extends BasePanel{
     /* -------------------------------------------------------------------------- */
     /*                                  Functions                                 */
     /* -------------------------------------------------------------------------- */
+    private JTextArea createTextArea() {
+        JTextArea textArea = new JTextArea(15, 30);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        return textArea;
+    }
+
+    private JPanel createLabeledPanel(String label, Component component) {
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(new JLabel(label), BorderLayout.NORTH);
+        panel.add(component, BorderLayout.CENTER);
+        return panel;
+    }
+
     @Override
     public void clear() {
         inputArea.setText("");
@@ -23,24 +41,6 @@ public class TextEncodignPanel extends BasePanel{
         mapArea.setText("");
     }
 
-    /* -------------------------------------------------------------------------- */
-    /*                                   Setters                                  */
-    /* -------------------------------------------------------------------------- */
-    public void setCodec(HuffmanCodec codec) {
-        this.codec = codec;
-    }
-    public void setInputArea(JTextArea inputArea) {
-        this.inputArea = inputArea;
-    }
-    public void setOutputArea(JTextArea outputArea) {
-        this.outputArea = outputArea;
-    }
-    public void setMapArea(JTextArea mapArea) {
-        this.mapArea = mapArea;
-    }
-    public void setEncodeButton(JButton encodeButton) {
-        this.encodeButton = encodeButton;
-    }
 
     /* -------------------------------------------------------------------------- */
     /*                                   Getters                                  */
