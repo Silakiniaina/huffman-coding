@@ -16,6 +16,13 @@ public class HuffmanTree {
         this.setDecodingMap(new HashMap<>());
     }
 
+    /* -------------------------------------------------------------------------- */
+    /*                                  Functions                                 */
+    /* -------------------------------------------------------------------------- */
+    public String encodeCharacter(char character) {
+        return encodingMap.get(character);
+    }
+
 
     /* -------------------------------------------------------------------------- */
     /*                                   Getters                                  */
