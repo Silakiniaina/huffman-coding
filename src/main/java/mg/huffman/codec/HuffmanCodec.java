@@ -25,6 +25,14 @@ public class HuffmanCodec {
         return frequencies;
     }
 
+    public Map<Character, Double> calculateProbabilities(Map<Character, Integer> frequencies, int totalChars) {
+        Map<Character, Double> probabilities = new HashMap<>();
+        for (Map.Entry<Character, Integer> entry : frequencies.entrySet()) {
+            probabilities.put(entry.getKey(), (double) entry.getValue() / totalChars);
+        }
+        return probabilities;
+    }
+
     /* -------------------------------------------------------------------------- */
     /*                                   Getters                                  */
     /* -------------------------------------------------------------------------- */
