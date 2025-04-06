@@ -24,7 +24,6 @@
 
   <build>
     <plugins>
-      <!-- Optional: Add the Maven Compiler plugin to specify JDK version -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
