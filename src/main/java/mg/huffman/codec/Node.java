@@ -23,6 +23,11 @@ public class Node implements Comparable<Node> {
         this.setProbability(left.getProbability() + right.getProbability());
     }
 
+    @Override
+    public int compareTo(Node other) {
+        return Double.compare(this.getProbability(), other.getProbability());
+    }
+
     public char getCharacter() {
         return character;
     }
