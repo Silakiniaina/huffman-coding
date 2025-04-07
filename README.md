@@ -50,6 +50,7 @@ HuffmanCoding.java
 ### Run 
 
 ```bash
+mvn clean compile
 mvn exec:java -Dexec.mainClass="mg.huffman.HuffmanCoding"
 ```
 
